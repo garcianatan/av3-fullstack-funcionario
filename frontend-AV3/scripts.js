@@ -36,8 +36,41 @@ btnCriar.addEventListener("click", (e) => {
         nome.value = ""
         cpf.value = ""
         funcao.value = ""
+
+        //
+        carregarFuncionarios()
     })
     .catch(err => {
         alert(err.erro || "Erro ao cadastrar funcionário")
     })
 })
+
+//
+
+const listaDiv = document.getElementById("funcionarios")
+
+function carregarFuncionarios() {
+    fetch("http://localhost:3071/funcionario/listar")
+        .then(res => res.json())
+        .then(dados => {
+
+            // limpa antes de renderizar
+            listaDiv.innerHTML = "<h2>Funcionários:</h2>"
+
+            dados.forEach(func => {
+                listaDiv.innerHTML += `
+                    <p>
+                        <strong>Nome:</strong> ${func.nome} <br>
+                        <strong>CPF:</strong> ${func.cpf} <br>
+                        <strong>Função:</strong> ${func.funcao}
+                    </p>
+                    <hr>
+                `
+            })
+        })
+        .catch(() => {
+            listaDiv.innerHTML += "<p>Erro ao carregar funcionários</p>"
+        })
+}
+
+carregarFuncionarios()
