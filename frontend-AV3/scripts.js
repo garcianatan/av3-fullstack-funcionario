@@ -22,6 +22,22 @@ btnCriar.addEventListener("click", (e) => {
         },
         body: JSON.stringify(funcionario)
     })
-    .then(res => res.json())
-    .then(res => alert(`Funcionário ${res.nome} criado com sucesso!`))
+
+    .then(res => {
+        if (!res.ok) {
+            return res.json().then(err => { throw err })
+        }
+        return res.json()
+    })
+    
+    .then(res => {
+        alert(`Funcionário ${funcionario.nome} criado com sucesso!`)
+
+        nome.value = ""
+        cpf.value = ""
+        funcao.value = ""
+    })
+    .catch(err => {
+        alert(err.erro || "Erro ao cadastrar funcionário")
+    })
 })
