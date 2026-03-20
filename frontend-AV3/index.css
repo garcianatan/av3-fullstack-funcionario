@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0 auto;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #dbdbdb;
+}
+
+p {
+    margin: 10px;
+    font-size: 1.2em;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+#container form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#container form input {
+    margin: 5px;
+    padding: 10px;
+    width: 30em;
+    font-size: 1em;
+}
+
+#btnCadastrar {
+    width: 30em;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
